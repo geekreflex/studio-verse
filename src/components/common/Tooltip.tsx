@@ -14,9 +14,8 @@ export default function Tooltip({
   children,
 }: TooltipProps) {
   const [tooltipVisible, setTooltipVisible] = useState(false);
-  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(
-    null
-  );
+  const [referenceElement, setReferenceElement] =
+    useState<HTMLDivElement | null>(null);
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
     null
   );
@@ -32,6 +31,12 @@ export default function Tooltip({
         name: 'offset',
         options: {
           offset: [0, 10],
+        },
+      },
+      {
+        name: 'preventOverflow',
+        options: {
+          boundary: document.body,
         },
       },
       {
@@ -79,7 +84,7 @@ const Wrap = styled.div`
     padding: 6px 10px;
     border-radius: ${(props) => props.theme.radius.small};
     font-size: 12px;
-    z-index: 998;
+    z-index: 9999;
     background-color: ${(props) => props.theme.colors.hoverActiveColor};
     color: ${(props) => props.theme.colors.textColor};
     width: max-content;

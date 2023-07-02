@@ -78,7 +78,7 @@ const Wrap = styled.div`
 
   .draggable-main {
     position: relative !important;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     flex: 1;
     padding-bottom: 10px;
   }
