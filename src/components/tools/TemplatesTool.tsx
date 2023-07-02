@@ -15,6 +15,7 @@ export default function TemplatesTool() {
     dispatch(setIsLoading(true));
     if (editor) {
       editor.canvas.clear();
+      editor.canvas.clearHistory();
 
       WebFont.load({
         google: {
@@ -24,6 +25,8 @@ export default function TemplatesTool() {
         active: () => {
           editor.canvas.loadFromJSON(template.json, () => {
             editor.resetWorkspace();
+            editor.canvas.clearHistory();
+
             editor.setWorkspaceSize(
               template.dimension.width,
               template.dimension.height

@@ -15,6 +15,7 @@ export default function History() {
       editor.canvas.on('object:added', runCan);
       editor.canvas.on('object:modified', runCan);
       editor.canvas.on('object:removed', runCan);
+      editor.canvas.on('history:clear', runCan);
     }
   }, [editor]);
 

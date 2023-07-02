@@ -15,7 +15,7 @@ interface FontListProps {
 
 export default function FontList({ close }: FontListProps) {
   const dispatch = useAppDispatch();
-  const { controller, selectedObject } = useEditorContext();
+  const { controller } = useEditorContext();
   const { fonts, status } = useAppSelector((state) => state.fonts);
   const [visibleFonts, setVisibleFonts] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
