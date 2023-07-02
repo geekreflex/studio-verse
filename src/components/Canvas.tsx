@@ -1,3 +1,4 @@
+import { useAppSelector } from '@/app/hooks';
 import { useEditorContext } from '@/context/EditorContext';
 import { Editor } from '@/core/Editor';
 import { fabric } from 'fabric';
@@ -6,6 +7,7 @@ import { styled } from 'styled-components';
 
 export default function Canvas() {
   const { setEditor } = useEditorContext();
+  const { dimension } = useAppSelector((state) => state.editor);
 
   useEffect(() => {
     const fabricCanvas = new fabric.Canvas('canvas', {
@@ -16,7 +18,7 @@ export default function Canvas() {
     });
 
     const workspaceEl = document.getElementById('workspace');
-    const option = { width: 1200, height: 1200 };
+    const option = { width: dimension.width, height: dimension.height };
 
     const editor = new Editor(fabricCanvas, workspaceEl!, option);
     setEditor(editor);

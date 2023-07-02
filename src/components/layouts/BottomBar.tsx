@@ -12,7 +12,7 @@ import { BsCursor } from 'react-icons/bs';
 import { useEditorContext } from '@/context/EditorContext';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from '@/app/hooks';
-import { toggleDownloadModal } from '@/features/appSlice';
+import { toggleDownloadModal, toggleJsonModal } from '@/features/appSlice';
 import Tooltip from '../common/Tooltip';
 
 export default function BottomBar() {
@@ -38,6 +38,10 @@ export default function BottomBar() {
 
   const handleDownloadModal = () => {
     dispatch(toggleDownloadModal(true));
+  };
+
+  const handleJsonModal = () => {
+    dispatch(toggleJsonModal(true));
   };
 
   return (
@@ -75,7 +79,7 @@ export default function BottomBar() {
           </button>
         </Tooltip>
         <Tooltip content="Export JSON">
-          <button className="iconn" onClick={handleDownloadModal}>
+          <button className="iconn" onClick={handleJsonModal}>
             <IoCodeDownload />
           </button>
         </Tooltip>

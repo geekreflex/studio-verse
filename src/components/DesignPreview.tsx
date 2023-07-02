@@ -51,7 +51,7 @@ export default function DesignPreview({ format, quality }: DesignPreviewProps) {
   const dispatch = useAppDispatch();
   const { previewImg } = useAppSelector((state) => state.editor);
   const { editor } = useEditorContext();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -71,7 +71,7 @@ export default function DesignPreview({ format, quality }: DesignPreviewProps) {
 
   return (
     <Wrap>
-      {loading && <p>Loading...</p>}
+      {(loading || previewImg === '') && <p>Loading...</p>}
       {previewImg && (
         <div className="preview-img-wrap">
           <img src={previewImg} alt="" />

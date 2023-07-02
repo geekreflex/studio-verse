@@ -9,6 +9,7 @@ import Range from './common/Range';
 import NumberInput from './common/NumberInput';
 import { Button, ButtonSecondary } from '@/styles/global';
 import { useEditorContext } from '@/context/EditorContext';
+import { setPreviewImg } from '@/features/editorSlice';
 
 export default function DownloadModal() {
   const dispatch = useAppDispatch();
@@ -20,6 +21,7 @@ export default function DownloadModal() {
 
   const handleClose = () => {
     dispatch(toggleDownloadModal(false));
+    dispatch(setPreviewImg(''));
   };
 
   const handleFilenameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -41,6 +41,7 @@ const Wrap = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9998;
+  overflow: hidden;
 
   .overlay {
     position: absolute;
@@ -60,5 +61,15 @@ const Wrap = styled.div`
     border-radius: ${(props) => props.theme.radius.small};
     box-shadow: ${(props) => props.theme.shadow.shadow1};
     border: 1px solid ${(props) => props.theme.colors.borderColor};
+    max-height: 90vh;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-main {
+    height: max-content;
+    flex: 1;
   }
 `;

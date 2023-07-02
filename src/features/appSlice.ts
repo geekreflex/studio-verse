@@ -13,6 +13,7 @@ interface AppState {
   propPanel: ObjectTypes | null;
   colorPickerWidget: boolean;
   downloadModal: boolean;
+  jsonModal: boolean;
 }
 
 const initialState: AppState = {
@@ -27,6 +28,7 @@ const initialState: AppState = {
   propPanel: null,
   colorPickerWidget: false,
   downloadModal: false,
+  jsonModal: false,
 };
 
 export const appSlice = createSlice({
@@ -63,6 +65,10 @@ export const appSlice = createSlice({
       state.downloadModal = action.payload;
     },
 
+    toggleJsonModal(state, action) {
+      state.jsonModal = action.payload;
+    },
+
     setPanelTitle(state, action) {
       state.panelTitle = action.payload;
     },
@@ -96,5 +102,6 @@ export const {
   hideColorPicker,
   toggleResizeModal,
   toggleDownloadModal,
+  toggleJsonModal,
 } = appSlice.actions;
 export default appSlice.reducer;
