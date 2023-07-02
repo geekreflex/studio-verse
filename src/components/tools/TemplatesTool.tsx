@@ -1,24 +1,35 @@
 import { useAppDispatch } from '@/app/hooks';
 import { useEditorContext } from '@/context/EditorContext';
 import templates from '@/data/templates';
+import { setIsLoading } from '@/features/appSlice';
 import { setDimension } from '@/features/editorSlice';
+import { getFontFamily } from '@/utils/array';
 import { styled } from 'styled-components';
+import WebFont from 'webfontloader';
 
 export default function TemplatesTool() {
   const dispatch = useAppDispatch();
   const { editor } = useEditorContext();
 
   const handleTemplate = (template: any) => {
+    dispatch(setIsLoading(true));
     if (editor) {
       editor.canvas.clear();
-      editor.canvas.loadFromJSON(template.json, () => {
-        console.log('loaded');
-        editor.resetWorkspace();
-        editor.setWorkspaceSize(
-          template.dimension.width,
-          template.dimension.height
-        );
-        dispatch(setDimension(template.dimension));
+      WebFont.load({
+        google: {
+          families: getFontFamily(JSON.stringify(template.json)),
+        },
+        active: () => {
+          editor.canvas.loadFromJSON(template.json, () => {
+            editor.resetWorkspace();
+            editor.setWorkspaceSize(
+              template.dimension.width,
+              template.dimension.height
+            );
+            dispatch(setIsLoading(false));
+            dispatch(setDimension(template.dimension));
+          });
+        },
       });
     }
   };

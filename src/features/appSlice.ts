@@ -14,6 +14,7 @@ interface AppState {
   colorPickerWidget: boolean;
   downloadModal: boolean;
   jsonModal: boolean;
+  isLoading: boolean;
 }
 
 const initialState: AppState = {
@@ -29,6 +30,7 @@ const initialState: AppState = {
   colorPickerWidget: false,
   downloadModal: false,
   jsonModal: false,
+  isLoading: false,
 };
 
 export const appSlice = createSlice({
@@ -87,6 +89,10 @@ export const appSlice = createSlice({
     hideColorPicker(state) {
       state.colorPickerWidget = false;
     },
+
+    setIsLoading(state, action) {
+      state.isLoading = action.payload;
+    },
   },
 });
 
@@ -103,5 +109,6 @@ export const {
   toggleResizeModal,
   toggleDownloadModal,
   toggleJsonModal,
+  setIsLoading,
 } = appSlice.actions;
 export default appSlice.reducer;
