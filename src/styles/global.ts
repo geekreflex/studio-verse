@@ -209,6 +209,13 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonSecondary = styled(Button)`
+  background-color: #292929;
+  &:hover {
+    background-color: #191919;
+  }
+`;
+
 export const BtnWrap = styled.div`
   display: flex;
   justify-content: center;

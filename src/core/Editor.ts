@@ -351,7 +351,7 @@ export class Editor {
 
       // Set minimum and maximum zoom values
       const minZoom = 0.1;
-      const maxZoom = 20;
+      const maxZoom = 4;
       zoom = Math.max(minZoom, Math.min(maxZoom, zoom));
 
       if (isControlKeyHeld) {

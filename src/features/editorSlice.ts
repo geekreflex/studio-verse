@@ -4,11 +4,13 @@ import { fabric } from 'fabric';
 interface EditorState {
   currentZoom: number;
   object: (fabric.Object & fabric.Textbox & fabric.Polygon) | null;
+  previewImg: string;
 }
 
 const initialState: EditorState = {
   currentZoom: 0,
   object: null,
+  previewImg: '',
 };
 
 export const editorSlice = createSlice({
@@ -28,8 +30,13 @@ export const editorSlice = createSlice({
     clearObject: (state) => {
       state.object = null;
     },
+
+    setPreviewImg: (state, action) => {
+      state.previewImg = action.payload;
+    },
   },
 });
 
-export const { setCurrentZoom, setObject, clearObject } = editorSlice.actions;
+export const { setCurrentZoom, setObject, clearObject, setPreviewImg } =
+  editorSlice.actions;
 export default editorSlice.reducer;

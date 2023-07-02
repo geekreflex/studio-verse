@@ -58,5 +58,7 @@ const Wrap = styled.div`
     position: relative;
     min-width: 300px;
     border-radius: ${(props) => props.theme.radius.small};
+    box-shadow: ${(props) => props.theme.shadow.shadow1};
+    border: 1px solid ${(props) => props.theme.colors.borderColor};
   }
 `;
