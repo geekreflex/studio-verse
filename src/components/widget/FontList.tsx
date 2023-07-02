@@ -7,6 +7,7 @@ import SearchInput from '../common/SearchInput';
 import { useEditorContext } from '@/context/EditorContext';
 import WebFont from 'webfontloader';
 import FontListSkeleton from '../skeleton/FontListSkeleton';
+import { setObject } from '@/features/editorSlice';
 
 interface FontListProps {
   close: () => void;
@@ -14,7 +15,7 @@ interface FontListProps {
 
 export default function FontList({ close }: FontListProps) {
   const dispatch = useAppDispatch();
-  const { controller } = useEditorContext();
+  const { controller, selectedObject } = useEditorContext();
   const { fonts, status } = useAppSelector((state) => state.fonts);
   const [visibleFonts, setVisibleFonts] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -74,6 +75,7 @@ export default function FontList({ close }: FontListProps) {
   const handleFont = (family: string) => {
     if (controller) {
       controller.fontFamily(family);
+      dispatch(setObject({ fontFamily: family }));
     }
   };
 

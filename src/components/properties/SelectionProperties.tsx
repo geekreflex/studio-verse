@@ -4,6 +4,7 @@ import { Button } from '@/styles/global';
 import { AiOutlineGroup, AiOutlineUngroup } from 'react-icons/ai';
 import { useEditorContext } from '@/context/EditorContext';
 import { useEffect, useState } from 'react';
+import Shadow from '../Shadow';
 
 export default function SelectionProperties() {
   const { controller, selectedType } = useEditorContext();
@@ -55,8 +56,13 @@ export default function SelectionProperties() {
         </div>
       )}
       <ObjectOptions />
+      <Shadow />
     </Wrap>
   );
 }
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;

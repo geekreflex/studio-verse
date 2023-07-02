@@ -57,7 +57,9 @@ export default function TextProperties() {
             className="font-select btn-text-arrow"
             onClick={() => setFontListVisible(true)}
           >
-            <span>Darker Grotesque</span>
+            <span style={{ fontFamily: object?.fontFamily }}>
+              {object?.fontFamily}
+            </span>
             <span className="arrow">
               <ArrowDownIcon />
             </span>
