@@ -30,9 +30,14 @@ export default function ObjectLayer() {
       <div className="obj-layer-wrap">
         {items.map((item) => (
           <div key={item.name} className="obj-layer-item" title={item.name}>
-            <button onClick={() => handleLayer(item.action)} className="iconn">
-              {item.icon}
-            </button>
+            <Tooltip content={item.name}>
+              <button
+                onClick={() => handleLayer(item.action)}
+                className="iconn"
+              >
+                {item.icon}
+              </button>
+            </Tooltip>
           </div>
         ))}
       </div>
