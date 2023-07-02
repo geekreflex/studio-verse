@@ -12,14 +12,14 @@ interface FabricjJson {
   objects: FabricObject[];
 }
 
-export function getFontFamily(json: string): string[] {
+export function extractFontFamiliesFromJson(json: string): string[] {
   try {
     const parsedJSON: FabricjJson = JSON.parse(json);
     const fontFamilies: string[] = parsedJSON.objects
       .filter((obj: FabricObject) => obj.type === 'textbox' && obj.fontFamily)
       .map((obj: FabricObject) => obj.fontFamily!);
 
-    return fontFamilies;
+    return fontFamilies.length > 0 ? fontFamilies : ['Lato'];
   } catch (error) {
     console.error('Error parsing JSON:', error);
     return [];

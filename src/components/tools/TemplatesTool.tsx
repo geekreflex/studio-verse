@@ -3,7 +3,7 @@ import { useEditorContext } from '@/context/EditorContext';
 import templates from '@/data/templates';
 import { setIsLoading } from '@/features/appSlice';
 import { setDimension } from '@/features/editorSlice';
-import { getFontFamily } from '@/utils/array';
+import { extractFontFamiliesFromJson } from '@/utils/array';
 import { styled } from 'styled-components';
 import WebFont from 'webfontloader';
 
@@ -15,10 +15,12 @@ export default function TemplatesTool() {
     dispatch(setIsLoading(true));
     if (editor) {
       editor.canvas.clear();
+
       WebFont.load({
         google: {
-          families: getFontFamily(JSON.stringify(template.json)),
+          families: extractFontFamiliesFromJson(JSON.stringify(template.json)),
         },
+
         active: () => {
           editor.canvas.loadFromJSON(template.json, () => {
             editor.resetWorkspace();

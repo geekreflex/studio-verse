@@ -3,6 +3,7 @@ import ResizeModal from '../ResizeModal';
 import DownloadModal from '../DownloadModal';
 import { styled } from 'styled-components';
 import JSONModal from '../JSONModal';
+import Loading from '../excerpt/Loading';
 
 /**
  *
@@ -11,7 +12,7 @@ import JSONModal from '../JSONModal';
  */
 
 export default function Over() {
-  const { resizeModal, downloadModal, jsonModal } = useAppSelector(
+  const { resizeModal, downloadModal, jsonModal, isLoading } = useAppSelector(
     (state) => state.app
   );
   return (
@@ -19,6 +20,7 @@ export default function Over() {
       {resizeModal && <ResizeModal />}
       {downloadModal && <DownloadModal />}
       {jsonModal && <JSONModal />}
+      {isLoading && <Loading />}
     </Wrap>
   );
 }
