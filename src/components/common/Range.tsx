@@ -103,5 +103,6 @@ const Wrap = styled.div`
     z-index: 2;
     left: 0;
     border-radius: ${(props) => props.theme.radius.small};
+    pointer-events: none;
   }
 `;
