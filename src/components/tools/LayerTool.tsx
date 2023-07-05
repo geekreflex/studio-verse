@@ -3,7 +3,7 @@ import Tab from '../common/Tab';
 import { useEffect, useState } from 'react';
 import { useEditorContext } from '@/context/EditorContext';
 import { fabric } from 'fabric';
-import { LuLock, LuUnlock, LuEye, LuEyeOff } from 'react-icons/lu';
+import { LuLock, LuEye } from 'react-icons/lu';
 
 import Tooltip from '../common/Tooltip';
 import LayerPreview from '../excerpt/LayerPreview';

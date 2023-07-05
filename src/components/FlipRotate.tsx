@@ -8,7 +8,7 @@ import {
   RotateRightIcon,
 } from '@/icons';
 import Tooltip from './common/Tooltip';
-import { LineY, TitleSmall } from '@/styles/global';
+import { TitleSmall } from '@/styles/global';
 
 export default function FlipRotate() {
   const { controller } = useEditorContext();
