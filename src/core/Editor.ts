@@ -180,7 +180,7 @@ export class Editor {
     if (cb) cb(this.workspace.left, this.workspace.top);
   }
 
-  public zoomToFit(offset: number = 100) {
+  public zoomToFit(offset = 100) {
     if (!this.workspace) return;
 
     // Get the dimensions of the workspace rectangle
@@ -201,7 +201,7 @@ export class Editor {
     this.setZoomAuto(scaleFactor);
   }
 
-  public zoomToFill(offset: number = 100) {
+  public zoomToFill(offset = 100) {
     if (!this.workspace) return;
 
     // Get the dimensions of the workspace rectangle

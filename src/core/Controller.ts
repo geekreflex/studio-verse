@@ -82,7 +82,7 @@ export class Controller {
     if (selectedObject?.type !== 'activeSelection') {
       return;
     }
-    // @ts-expect-error
+    // @ts-expect-error toGroup not shipped with types
     selectedObject?.toGroup();
     this.editor.canvas.requestRenderAll();
   }
@@ -92,7 +92,7 @@ export class Controller {
     if (selectedObject?.type !== 'group') {
       return;
     }
-    // @ts-ignore
+    // @ts-expect-error toActiveSelection not shipped with types
     selectedObject?.toActiveSelection();
     this.editor.canvas.requestRenderAll();
     this.dispatch(switchPropertyPanel('activeSelection'));

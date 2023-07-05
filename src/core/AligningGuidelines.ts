@@ -1,3 +1,9 @@
+/**
+ * Aligning Guidelines
+ * Author: Jin <@caijinyc>
+ * Source: https://github.com/caijinyc/fabric-guideline-plugin/blob/main/src/module/aligning.ts
+ */
+
 import { fabric } from 'fabric';
 import { Keys } from '@/utils/vendor/align';
 import { COLOR } from '@/utils/constants';
