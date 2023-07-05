@@ -45,8 +45,8 @@ export default function Stroke() {
   const handleAddStroke = () => {
     if (editor) {
       const activeObject = editor.canvas.getActiveObject();
-      activeObject?.set({ stroke: STROKE });
-      dispatch(setObject({ stroke: STROKE }));
+      activeObject?.set({ stroke: STROKE, strokeWidth: 1 });
+      dispatch(setObject({ stroke: STROKE, strokeWidth: 1 }));
       editor.canvas.renderAll();
     }
   };
@@ -54,8 +54,8 @@ export default function Stroke() {
   const handleClearStroke = () => {
     if (editor) {
       const activeObject = editor.canvas.getActiveObject();
-      activeObject?.set({ stroke: undefined });
-      dispatch(setObject({ stroke: undefined }));
+      activeObject?.set({ stroke: undefined, strokeWidth: 0 });
+      dispatch(setObject({ stroke: undefined, strokeWidth: 0 }));
       editor.canvas.renderAll();
     }
   };
