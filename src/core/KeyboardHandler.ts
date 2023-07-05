@@ -79,8 +79,8 @@ export class KeyboardHandler {
     const obj = this.canvas.getActiveObject() as fabric.Textbox;
 
     if (obj?.type === 'textbox') {
-      // obj.text = '';
-      // this.canvas.renderAll();
+      obj.text = '';
+      this.canvas.renderAll();
     } else {
       this.controller.delete();
     }

@@ -82,7 +82,7 @@ export class Controller {
     if (selectedObject?.type !== 'activeSelection') {
       return;
     }
-    // @ts-ignore
+    // @ts-expect-error
     selectedObject?.toGroup();
     this.editor.canvas.requestRenderAll();
   }

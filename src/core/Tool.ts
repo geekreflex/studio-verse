@@ -37,6 +37,8 @@ export class Tool {
       ...RECTANGLE,
       id: this.id(),
       name: 'rectangle',
+      rx: 50,
+      ry: 50,
     });
     this.addObject(rectangle);
   }
