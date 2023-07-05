@@ -7,7 +7,7 @@ function getLocalPoint(
   x: number,
   y: number
 ) {
-  var target = transform.target,
+  let target = transform.target,
     control = target.controls[transform.corner],
     zoom = target.canvas!.getZoom(),
     padding = target.padding! / zoom,

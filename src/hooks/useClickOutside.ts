@@ -2,7 +2,7 @@ import useEventListener from './useEventListener';
 
 export default function useClickOutside(
   ref: React.RefObject<HTMLElement>,
-  cb: Function
+  cb: (e: Event) => void
 ) {
   useEventListener(
     'click',
