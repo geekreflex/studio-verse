@@ -34,7 +34,7 @@ export default function CornerRound() {
         </div>
         <Range
           min={0}
-          max={100}
+          max={Math.max(100, (object as fabric.Rect)?.rx!)}
           step={1}
           value={(object as fabric.Rect)?.rx || 0}
           onChange={handleRoundCorner}
