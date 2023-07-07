@@ -5,6 +5,7 @@ interface EditorState {
   currentZoom: number;
   object: (fabric.Object & fabric.Textbox & fabric.Polygon) | null;
   previewImg: string;
+  drawingMode: boolean;
   dimension: {
     width: number;
     height: number;
@@ -15,6 +16,7 @@ const initialState: EditorState = {
   currentZoom: 0,
   object: null,
   previewImg: '',
+  drawingMode: false,
   dimension: {
     width: 1200,
     height: 1200,
@@ -51,6 +53,9 @@ export const editorSlice = createSlice({
         height: action.payload.height || height,
       };
     },
+    setDrawingMode: (state, action) => {
+      state.drawingMode = action.payload;
+    },
   },
 });
 
@@ -60,5 +65,6 @@ export const {
   clearObject,
   setPreviewImg,
   setDimension,
+  setDrawingMode,
 } = editorSlice.actions;
 export default editorSlice.reducer;
