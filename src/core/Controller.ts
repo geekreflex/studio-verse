@@ -2,6 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { Editor } from './Editor';
 import FontFaceObserver from 'fontfaceobserver';
 import { switchPropertyPanel } from '@/features/appSlice';
+import { generateUniqueId } from '@/utils/unique';
 
 export class Controller {
   editor: Editor;
@@ -58,6 +59,8 @@ export class Controller {
       activeObject.clone((clone: fabric.Object) => {
         this.editor.canvas.add(
           clone.set({
+            name: activeObject.name,
+            id: generateUniqueId(),
             left: activeObject.left! + 10,
             top: activeObject.top! + 10,
           })
