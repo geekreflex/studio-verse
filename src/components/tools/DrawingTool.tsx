@@ -13,8 +13,6 @@ export default function DrawingTool() {
     draw?.changeBrush(brush);
   };
 
-  const brushes = [{ name: '' }];
-
   return (
     <Wrap>
       <div>

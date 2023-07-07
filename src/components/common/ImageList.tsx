@@ -3,6 +3,7 @@ import { IStatus, Image } from '@/types/app';
 import Masonry from 'react-masonry-css';
 import { styled } from 'styled-components';
 import ImageListSkeleton from '../skeleton/ImageListSkeleton';
+import { useEffect } from 'react';
 
 interface ImageListProps {
   images: Image[];
@@ -32,6 +33,20 @@ export default function ImageList({
   const handleDrag = (imageUrl: string) => {
     onAddImage(imageUrl);
   };
+
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 20) {
+      console.log('call fetch more');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   if (status === 'loading') {
     return <ImageListSkeleton />;

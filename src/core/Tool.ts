@@ -141,6 +141,7 @@ export class Tool {
         top: this.pos.y,
       });
     } else {
+      obj.scaleToWidth(this.editor.workspace?.width! / 2);
       const center = this.editor.workspace?.getCenterPoint();
       this.editor.canvas._centerObject(obj, center!);
     }
