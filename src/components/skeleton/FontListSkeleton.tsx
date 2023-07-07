@@ -7,8 +7,8 @@ export default function FontListSkeleton() {
   const [items, _] = useState(range(1, 50));
   return (
     <Wrap>
-      {items.map(() => (
-        <Skeleton height={25} />
+      {items.map((item) => (
+        <Skeleton key={item} height={25} />
       ))}
     </Wrap>
   );

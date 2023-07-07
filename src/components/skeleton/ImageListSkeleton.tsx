@@ -16,8 +16,9 @@ export default function ImageListSkeleton() {
   return (
     <Wrap>
       <Masonry breakpointCols={2} className="image-list">
-        {items.map(() => (
+        {items.map((item) => (
           <Skeleton
+            key={item}
             height={getRandomHeight()}
             style={{ marginBottom: '5px' }}
           />
