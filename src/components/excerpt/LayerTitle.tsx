@@ -25,5 +25,6 @@ const Wrap = styled.div`
     text-overflow: ellipsis;
     flex: 1;
     overflow: hidden;
+    width: 100px;
   }
 `;
