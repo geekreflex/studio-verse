@@ -1,3 +1,4 @@
+import { BirthdayImg, BirthdayTemplate } from './birthday';
 import { FriendsImg, FriendsTemplate } from './friends';
 import { StarTemplate, StarImg } from './star';
 
@@ -18,6 +19,15 @@ const templates = [
     dimension: {
       width: 1200,
       height: 1400,
+    },
+  },
+  {
+    name: 'Birthday',
+    img: BirthdayImg,
+    json: BirthdayTemplate,
+    dimension: {
+      width: 1500,
+      height: 1200,
     },
   },
 ];

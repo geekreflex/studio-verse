@@ -96,7 +96,7 @@ export class Tool {
     const text = new fabric.Textbox('Click to edit', {
       width: 600,
       textAlign: 'center',
-      fontFamily: 'Arial',
+      fontFamily: 'Roboto',
       fontSize: 72,
       fill: '#000000',
       id: this.id(),
