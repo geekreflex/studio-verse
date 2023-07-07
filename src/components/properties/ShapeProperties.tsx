@@ -5,6 +5,7 @@ import Stroke from '../Stroke';
 import Shadow from '../Shadow';
 import PolygonProps from '../PolygonProps';
 import { useEditorContext } from '@/context/EditorContext';
+import CornerRound from '../CornerRound';
 
 export default function ShapeProperties() {
   const { selectedType } = useEditorContext();
@@ -13,6 +14,7 @@ export default function ShapeProperties() {
       {selectedType !== 'line' && <Fill />}
       <Stroke />
       {selectedType === 'polygon' && <PolygonProps />}
+      {selectedType === 'rect' && <CornerRound />}
       <MoreAction />
       <Shadow />
     </Wrap>
