@@ -5,7 +5,7 @@ interface EditorState {
   currentZoom: number;
   object: (fabric.Object & fabric.Textbox & fabric.Polygon) | null;
   previewImg: string;
-  drawingMode: boolean;
+  isDrawingMode: boolean;
   dimension: {
     width: number;
     height: number;
@@ -16,7 +16,7 @@ const initialState: EditorState = {
   currentZoom: 0,
   object: null,
   previewImg: '',
-  drawingMode: false,
+  isDrawingMode: false,
   dimension: {
     width: 1200,
     height: 1200,
@@ -54,7 +54,7 @@ export const editorSlice = createSlice({
       };
     },
     setDrawingMode: (state, action) => {
-      state.drawingMode = action.payload;
+      state.isDrawingMode = action.payload;
     },
   },
 });
