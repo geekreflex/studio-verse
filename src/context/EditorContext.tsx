@@ -1,5 +1,6 @@
 import { useAppDispatch } from '@/app/hooks';
 import { Controller } from '@/core/Controller';
+import { Drawing } from '@/core/Drawing';
 import { Editor } from '@/core/Editor';
 import { Tool } from '@/core/Tool';
 import { switchPropertyPanel } from '@/features/appSlice';
@@ -15,6 +16,7 @@ import {
 } from 'react';
 
 type EditorContextType = {
+  draw: Drawing | null;
   tool: Tool | null;
   editor: Editor | null;
   setEditor: (editor: Editor | null) => void;
@@ -28,6 +30,7 @@ type EditorContextType = {
 };
 
 const EditorContext = createContext<EditorContextType>({
+  draw: null,
   tool: null,
   editor: null,
   setEditor: () => {},
@@ -40,6 +43,7 @@ const EditorContext = createContext<EditorContextType>({
 
 export const EditorProvider = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
+  const [draw, setDraw] = useState<Drawing | null>(null);
   const [editor, _setEditor] = useState<Editor | null>(null);
   const [tool, setTool] = useState<Tool | null>(null);
   const [selectedObject, setSelectedObject] = useState<
@@ -57,6 +61,7 @@ export const EditorProvider = ({ children }: { children: React.ReactNode }) => {
     _setEditor(editor);
     if (editor) {
       setTool(new Tool(editor));
+      setDraw(new Drawing(editor, dispatch));
       setController(new Controller(editor, dispatch));
     }
   }, []);
@@ -96,18 +101,6 @@ export const EditorProvider = ({ children }: { children: React.ReactNode }) => {
           dispatch(
             setObject(selectedObject.toJSON(['name', 'id', 'selectable']))
           );
-          // setSelectedType(
-          //   selected.length > 1
-          //     ? ObjectTypes.Selection
-          //     : (selected[0].type as ObjectTypes)
-          // );
-          // dispatch(
-          //   switchPropertyPanel(
-          //     selected.length > 1
-          //       ? ObjectTypes.Selection
-          //       : (selected[0].type as ObjectTypes)
-          //   )
-          // );
         } else {
           setSelectedObjects(undefined);
           setSelectedObject(undefined);
@@ -136,6 +129,7 @@ export const EditorProvider = ({ children }: { children: React.ReactNode }) => {
   }, [editor]);
 
   const contextValues = {
+    draw,
     tool,
     editor,
     setEditor,

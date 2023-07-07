@@ -8,6 +8,7 @@ import ImagesTool from '../tools/ImagesTool';
 import BackgroundTool from '../tools/BackgroundTool';
 import { switchActiveTool } from '@/features/appSlice';
 import TemplatesTool from '../tools/TemplatesTool';
+import DrawingTool from '../tools/DrawingTool';
 
 export default function AssetsPanel() {
   const dispatch = useAppDispatch();
@@ -27,6 +28,8 @@ export default function AssetsPanel() {
         return <LayerTool />;
       case 'Templates':
         return <TemplatesTool />;
+      case 'Draw':
+        return <DrawingTool />;
       default:
         return 'Not implemented';
     }

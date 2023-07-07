@@ -11,18 +11,25 @@ import { FiDownload } from 'react-icons/fi';
 import { BsCursor } from 'react-icons/bs';
 import { useEditorContext } from '@/context/EditorContext';
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from '@/app/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { toggleDownloadModal, toggleJsonModal } from '@/features/appSlice';
 import Tooltip from '../common/Tooltip';
 
 export default function BottomBar() {
   const dispatch = useAppDispatch();
   const [panMode, setPanMode] = useState(false);
+  const { isDrawingMode } = useAppSelector((state) => state.editor);
   const { editor } = useEditorContext();
 
   useEffect(() => {
     setPanMode(editor?.panMode!);
   }, [editor]);
+
+  useEffect(() => {
+    if (isDrawingMode) {
+      setPanMode(false);
+    }
+  }, [isDrawingMode]);
 
   const handlePanToggle = () => {
     if (editor) {

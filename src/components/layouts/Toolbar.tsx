@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import Tooltip from '@/components/common/Tooltip';
+import { useEditorContext } from '@/context/EditorContext';
 import { switchActiveTool } from '@/features/appSlice';
 import {
   BgIcon,
@@ -63,6 +64,7 @@ const tools: ITool[] = [
 
 export default function Toolbar() {
   const dispatch = useAppDispatch();
+  const { draw } = useEditorContext();
   const gliderRef = useRef<HTMLDivElement>(null);
   const [gliderWidth, setGliderWidth] = useState(0);
   const [gliderOffset, setGliderOffset] = useState(0);
@@ -86,6 +88,11 @@ export default function Toolbar() {
 
   const onToolClick = (tool: ITool) => {
     dispatch(switchActiveTool(tool.name));
+    if (tool.name === 'Draw') {
+      draw?.start();
+    } else {
+      draw?.end();
+    }
   };
 
   return (
